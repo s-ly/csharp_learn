@@ -80,32 +80,29 @@ class Program {
     }
   }
 
-  static void Timer(){
+  static void Timer() {
     Console.WriteLine("Таймер (P: пауза/продолжить, Esc: выход)");
-        
-        DateTime lastPrint = DateTime.Now;
-        bool isPaused = false;
-        bool exit = false;
 
-        while (!exit)
-        {
-            // Обработка клавиш 
-            if (Console.KeyAvailable)
-            {
-                var key = Console.ReadKey(true).Key;
-                if (key == ConsoleKey.P) isPaused = !isPaused;
-                if (key == ConsoleKey.Escape) exit = true;
-            }
+    DateTime lastPrint = DateTime.Now;
+    bool isPaused = false;
+    bool exit = false;
 
-            // Проверка времени
-            if (!isPaused && (DateTime.Now - lastPrint).TotalMilliseconds >= 500)
-            {
-                Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
-                lastPrint = DateTime.Now;
-            }
+    while (!exit) {
+      // Обработка клавиш 
+      if (Console.KeyAvailable) {
+        var key = Console.ReadKey(true).Key;
+        if (key == ConsoleKey.P) isPaused = !isPaused;
+        if (key == ConsoleKey.Escape) exit = true;
+      }
 
-            // Небольшая задержка для снижения нагрузки на CPU
-            System.Threading.Thread.Sleep(50);
-        }
+      // Проверка времени
+      if (!isPaused && (DateTime.Now - lastPrint).TotalMilliseconds >= 500) {
+        Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
+        lastPrint = DateTime.Now;
+      }
+
+      // Небольшая задержка для снижения нагрузки на CPU
+      System.Threading.Thread.Sleep(50);
+    }
   }
 }
