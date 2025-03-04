@@ -89,7 +89,7 @@ class Program {
 
         while (!exit)
         {
-            // Обработка клавиш
+            // Обработка клавиш 
             if (Console.KeyAvailable)
             {
                 var key = Console.ReadKey(true).Key;
