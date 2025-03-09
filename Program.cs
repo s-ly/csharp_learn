@@ -1,4 +1,6 @@
-﻿namespace HelloWorld;
+﻿using App;
+
+namespace HelloWorld;
 
 /// <summary>
 /// Описание класса
@@ -8,7 +10,8 @@ class Program {
     // Draw();    
     // LoopGame();
     // Loop2();
-    Timer();
+    // Timer();
+    Printer.PrintTest();
   }
   static void Draw() {
     Console.Clear();
