@@ -2,17 +2,38 @@
 
 namespace HelloWorld;
 
-/// <summary>
-/// Описание класса
-/// </summary>
 class Program {
   static void Main(string[] args) {
-    // Draw();    
-    // LoopGame();
-    // Loop2();
-    // Timer();
-    Printer.PrintTest();
+    // Printer.PrintTest();
+    // Printer.PrintBoard();
+    // Printer printer = new Printer();
+    // printer.PrintAll();
+
+
+    Screen screen = new Screen(30);
+    screen.Draw();
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   static void Draw() {
     Console.Clear();
     Console.CursorVisible = false;

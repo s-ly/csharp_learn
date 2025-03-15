@@ -5,6 +5,9 @@ namespace App;
 public static class Symbol {
   public const string empty = "";
   public const string space = " ";
+  public const string star = "*";
+  public const string openSquareBracket = "[";
+  public const string closeSquareBracket = "]";
   public const string horizontalLine = "─";
   public const string verticalLine = "│";
   public const string cornerLeftTop = "┌";
@@ -15,6 +18,75 @@ public static class Symbol {
   public const string blockMedium = "▓";
   public const string blockLow = "▒";
   public const string blockVeryLow = "░";
+}
+
+public class Pixel {
+  public string SymbolFirst { get; set; } = Symbol.openSquareBracket;
+  public string SymbolSecond { get; set; } = Symbol.closeSquareBracket;
+  // public int X { get; set; }
+  // public int Y { get; set; }
+
+  // public void SetPixelLocal(int x, int y) {
+  //   X = x;
+  //   Y = Y;
+  // }
+
+  public void SetPixelSymbol(string symbolFirst = Symbol.space, string symbolSecond = Symbol.space) {
+    SymbolFirst = symbolFirst;
+    SymbolSecond = symbolSecond;
+  }
+}
+
+public class Screen {
+  const int minSizeX = 2;
+  const int minSizeY = 2;
+
+  public int SizeX { get; set; }
+  public int SizeY { get; set; }
+  public Pixel[,] field;
+
+  public Screen() {
+    SizeX = minSizeX;
+    SizeY = minSizeY;
+
+    field = new Pixel[SizeX, SizeY];
+    for (int i = 0; i < SizeY; i++) {
+      for (int j = 0; j < SizeX; j++) {
+        field[i, j] = new Pixel();
+      }
+    }
+  }
+
+  public Screen(int size) {
+    SizeX = size;
+    SizeY = size;
+
+    field = new Pixel[SizeX, SizeY];
+    for (int i = 0; i < SizeY; i++) {
+      for (int j = 0; j < SizeX; j++) {
+        field[i, j] = new Pixel();
+      }
+    }
+  }
+
+  public void Draw() {
+    Console.Clear();
+    // Console.CursorVisible = false;
+    DrawScreen();
+    // Console.CursorVisible = true;
+  }
+
+  public void DrawScreen() {
+    string line = "";
+    for (int i = 0; i < SizeY; i++) {
+      for (int j = 0; j < SizeX; j++) {
+        line += field[i, j].SymbolFirst + field[i, j].SymbolSecond;
+      }
+      Console.WriteLine(line);
+      line = "";
+    }
+  }
+
 }
 
 public class Printer {
@@ -46,6 +118,23 @@ public class Printer {
     Console.CursorVisible = false;
     Console.Clear();
     PrintBoard(sizeX: 20, sizeY: 10);
+    Console.CursorVisible = true;
+  }
+
+  public void PrintField() {
+    for (int r = 0; r < Rows; r++) {
+      for (int c = 0; c < Columns; c++) {
+        Console.Write(c);
+      }
+      Console.WriteLine();
+    }
+  }
+
+  public void PrintAll() {
+    Console.CursorVisible = false;
+    Console.Clear();
+    // PrintBoard(sizeX: 20, sizeY: 10);
+    PrintField();
     Console.CursorVisible = true;
   }
 
