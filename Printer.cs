@@ -43,7 +43,7 @@ public class Screen {
 
   public int SizeX { get; set; }
   public int SizeY { get; set; }
-  public Pixel[,] field;
+  public Pixel[,] field; // двуменрный массив пикселей
 
   public Screen() {
     SizeX = minSizeX;
@@ -87,7 +87,55 @@ public class Screen {
     }
   }
 
+  public void MakePoint(int x = 1, int y = 1) {
+    Pixel pixel = new Pixel();
+    pixel.SetPixelSymbol(Symbol.blockHigh, Symbol.blockHigh);
+    field[y - 1, x - 1] = pixel;
+  }
+
+  /// <summary>
+  /// Заполняет экран выбранным пикселем.
+  /// </summary>
+  public void Fill(Pixel pixel) {
+    for (int i = 0; i < SizeY; i++) {
+      for (int j = 0; j < SizeX; j++) {
+        field[i, j] = pixel;
+      }
+    }
+  }
+
+  public void Clear() {
+    Pixel pixel = new Pixel();
+    pixel.SetPixelSymbol(Symbol.space, Symbol.space);
+    Fill(pixel);
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 public class Printer {
   const int defaultMiniSizeField = 2;

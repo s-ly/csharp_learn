@@ -10,7 +10,15 @@ class Program {
     // printer.PrintAll();
 
 
-    Screen screen = new Screen(30);
+    Screen screen = new Screen(10);
+
+    // Pixel pixel = new Pixel();
+    // pixel.SetPixelSymbol(Symbol.blockVeryLow, Symbol.blockVeryLow);
+    // screen.Fill(pixel);
+    
+    screen.MakePoint();
+    screen.MakePoint(5, 5);
+    screen.MakePoint(10, 10);
     screen.Draw();
   }
 
