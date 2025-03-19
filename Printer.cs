@@ -93,6 +93,39 @@ public class Screen {
     field[y - 1, x - 1] = pixel;
   }
 
+  public void MakeLine(int x1, int y1, int x2, int y2) {
+    // Pixel pixel = new Pixel();
+    // pixel.SetPixelSymbol(Symbol.blockHigh, Symbol.blockHigh);
+
+    // временная заглушка
+    // field[y1 - 1, x1 - 1] = pixel;
+    // field[y2 - 1, x2 - 1] = pixel;
+    _algoritmBrezenhame();
+
+
+    void _algoritmBrezenhame() {
+      int deltaX = Math.Abs(x2 - x1);
+      int deltaY = Math.Abs(y2 - y1);
+      int signX = x1 < x2 ? 1 : -1;
+      int signY = y1 < y2 ? 1 : -1;
+      int error = deltaX - deltaY;
+
+      MakePoint(x1, y1);
+      while (x1 != x2 || y1 != y2) {
+        int doubleError = error * 2;
+        if (doubleError > -deltaY) {
+          error -= deltaY;
+          x1 += signX;
+        }
+        if (doubleError < deltaX) {
+          error += deltaX;
+          y1 += signY;
+        }
+        MakePoint(x1, y1);
+      }
+    }
+  }
+
   /// <summary>
   /// Заполняет экран выбранным пикселем.
   /// </summary>
