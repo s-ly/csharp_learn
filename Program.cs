@@ -4,24 +4,13 @@ namespace HelloWorld;
 
 class Program {
   static void Main(string[] args) {
-    // Printer.PrintTest();
-    // Printer.PrintBoard();
-    // Printer printer = new Printer();
-    // printer.PrintAll();
-
-
     Screen screen = new Screen(30);
-
-    // Pixel pixel = new Pixel();
-    // pixel.SetPixelSymbol(Symbol.blockVeryLow, Symbol.blockVeryLow);
-    // screen.Fill(pixel);
-
-    // screen.MakePoint();
-    // screen.MakePoint(5, 5);
-    // screen.MakePoint(10, 10);
     screen.MakeLine(x1: 9, y1: 1, x2: 1, y2: 5);
     screen.MakeLine(x1: 30, y1: 30, x2: 1, y2: 5);
     screen.Draw();
+
+    // Console.WriteLine("Hello, World!");
+    Controller.Loop();
   }
 
 
